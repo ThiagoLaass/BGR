@@ -1,8 +1,16 @@
-{
-    schema: {
-        query: Query
-        mutation: Mutation
-    }
+type Query {
+  me: User
+}
+ 
+type User {
+  id: ID
+  name: String
+}
 
-    project(name: String!): Project
+function Query_me(request) {
+  return request.auth.user
+}
+ 
+function User_name(user) {
+  return user.getName()
 }
